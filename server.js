@@ -38,6 +38,10 @@ app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
 })
 
+app.get('/api', (request, response) => {
+    response.json(shoes)
+})
+
 app.get('/api/:shoe', (request, response) => {
     const shoeVarConverted = request.params.shoe
     console.log(shoeVarConverted)
