@@ -6,6 +6,7 @@ const MongoClient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 8000;
 require('dotenv').config();
 
+
 // set up DB connection
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -40,6 +41,7 @@ app.get('/',(request, response)=>{
 
 // POST request to DB connection
 app.post('/addShoe', (request, response) => {
+    console.log(request.body.releaseName)
     db.collection('shoes').insertOne({
         brand: request.body.brand,
         releaseDate: request.body.releaseDate,
@@ -47,7 +49,7 @@ app.post('/addShoe', (request, response) => {
         sizes: request.body.sizing, 
     })
     .then(result => {
-        console.log(`Shoe Added: ${request.body.birthName}`)
+        console.log(`Shoe Added: ${request.body.releaseName}`)
         response.redirect('/')
     })
     .catch(error => console.error(error));
