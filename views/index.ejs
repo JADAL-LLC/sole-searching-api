@@ -12,9 +12,13 @@
     <ul class="shoes">
         <% for(let i=0; i < info.length; i++) {%>
             <li class="shoes">
-                <span><%= info[i].nike %></span>
-                <!-- <span><%= info[i].birthLocation %></span>
-                <span class='fa fa-thumbs-up'></span>
+                <span><%= info[i].releaseName %></span>
+                <span><%= info[i].brand %></span>
+                <span><%= info[i].releaseDate %></span>
+                <span><%= info[i].sizes %></span>
+
+                
+                <!-- <span class='fa fa-thumbs-up'></span>
                 <span class='fa fa-trash'></span>
                 <span class='updateBtn'>update</span> -->
             </li>

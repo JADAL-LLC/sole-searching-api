@@ -39,11 +39,11 @@ app.get('/',(request, response)=>{
 
 
 // POST request to DB connection
-app.post('/addRapper', (request, response) => {
+app.post('/addShoe', (request, response) => {
     db.collection('shoes').insertOne({birthName: request.body.birthName,
     birthLocation: request.body.birthLocation})
     .then(result => {
-        console.log(`Rapper Added: ${request.body.birthName}`)
+        console.log(`Shoe Added: ${request.body.birthName}`)
         response.redirect('/')
     })
     .catch(error => console.error(error));
@@ -51,11 +51,11 @@ app.post('/addRapper', (request, response) => {
 
 
 // delete request to DB
-app.delete('/deleteRapper', (request, response) => {
+app.delete('/deleteShoe', (request, response) => {
     db.collection('shoes').deleteOne({birthName: request.body.birthName})
     .then(result => {
-        console.log('Rapper Deleted')
-        response.json('Rapper Deleted')
+        console.log('Shoe Deleted')
+        response.json('Shoe Deleted')
     })
     .catch(error => console.error(error))
 });
