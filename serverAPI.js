@@ -45,6 +45,7 @@ app.post('/addShoe', (request, response) => {
     db.collection('shoes').insertOne({
         brand: request.body.brand,
         releaseDate: request.body.releaseDate,
+        imgURL: request.body.imgURL,
         releaseName: request.body.releaseName,
         sizes: request.body.sizing, 
     })

@@ -16,6 +16,7 @@
                 <span><%= info[i].brand %></span>
                 <span><%= info[i].releaseDate %></span>
                 <span><%= info[i].sizes %></span>
+                <img src="<%= info[i].imgURL %>" alt="">
 
                 
                 <!-- <span class='fa fa-thumbs-up'></span>
@@ -26,11 +27,16 @@
     </ul>
 
     <form action="/addShoe" method="POST">
+        <!-- Text format section -->
         <input type="text" placeholder="Brand" name="brand"><br>
         <input type="text" placeholder="Release Name" name="releaseName"><br>
+        <input type="text" placeholder="Image URL" name="imgURL"><br>
+
+        <!-- Date format Section -->
         <input type="date" placeholder="Release Date" name="releaseDate"><br>
-        <!-- <input type="text" placeholder="Sizing (Men's, Women's, GS (Grade School), Y (Youth) " name="sizing"> -->
-        <!-- <p>Sizes Available</p> -->
+
+
+        <!-- Radio below -->
         <input type="radio" id="mens" name="sizing" value="mens">
         <label for="mens">Men's</label>
         <input type="radio" id="womens" name="sizing" value="womens">
