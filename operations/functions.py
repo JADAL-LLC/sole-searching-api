@@ -1,5 +1,5 @@
-def myFunction(str):
+def convertStrToLowerNoSpaces(str):
     return str.replace(' ', '-').lower()
 
 
-print(myFunction('Nike Airmax 95'))
+print(convertStrToLowerNoSpaces('Nike Airmax 95'))
