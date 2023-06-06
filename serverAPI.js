@@ -40,8 +40,12 @@ app.get('/',(request, response)=>{
 
 // POST request to DB connection
 app.post('/addShoe', (request, response) => {
-    db.collection('shoes').insertOne({birthName: request.body.birthName,
-    birthLocation: request.body.birthLocation})
+    db.collection('shoes').insertOne({
+        brand: request.body.brand,
+        releaseDate: request.body.releaseDate,
+        releaseName: request.body.releaseName,
+        sizes: request.body.sizing, 
+    })
     .then(result => {
         console.log(`Shoe Added: ${request.body.birthName}`)
         response.redirect('/')

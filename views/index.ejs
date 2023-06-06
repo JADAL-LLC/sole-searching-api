@@ -23,7 +23,25 @@
                 <span class='updateBtn'>update</span> -->
             </li>
         <% } %>
-        </ul>
+    </ul>
+
+    <form action="/addShoe" method="POST">
+        <input type="text" placeholder="Brand" name="brand"><br>
+        <input type="text" placeholder="Release Name" name="releaseName"><br>
+        <input type="text" placeholder="Release Date" name="releaseDate"><br>
+        <!-- <input type="text" placeholder="Sizing (Men's, Women's, GS (Grade School), Y (Youth) " name="sizing"> -->
+        <!-- <p>Sizes Available</p> -->
+        <input type="radio" id="mens" name="sizing" value="mens">
+        <label for="mens">Men's</label>
+        <input type="radio" id="womens" name="sizing" value="womens">
+        <label for="womens">Women's</label>
+        <input type="radio" id="gradeSchool" name="sizing" value="gradeSchool">
+        <label for="gradeSchool">GS (Grade School)</label>
+        <input type="radio" id="youth" name="sizing" value="youth">
+        <label for="youth">Y (Youth)</label><br><br><br>
+        <input type="submit">
+    </form>
+
     
 </body>
 </html>
