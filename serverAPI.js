@@ -4,7 +4,9 @@ const app = express();
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 8000;
+const myModules = require('./operations/myFunctions')
 require('dotenv').config();
+
 
 
 // set up DB connection
@@ -32,7 +34,7 @@ app.use(express.json());
 app.get('/',(request, response)=>{
     db.collection('shoes').find().toArray()
     .then(data => {
-        console.log(data)
+        // console.log(data)
         response.render('index.ejs', { info: data })
     })
     .catch(error => console.error(error))
@@ -41,16 +43,19 @@ app.get('/',(request, response)=>{
 
 // POST request to DB connection
 app.post('/addShoe', (request, response) => {
-    console.log(request.body.releaseName)
+    const rawReleaseNameStr = request.body.releaseName
+    const clearUrl = myModules.rawStrToUrl(rawReleaseNameStr)
+    console.log(clearUrl)
+
     db.collection('shoes').insertOne({
         brand: request.body.brand,
         releaseDate: request.body.releaseDate,
         imgURL: request.body.imgURL,
-        releaseName: request.body.releaseName,
+        releaseName: clearUrl,
         sizes: request.body.sizing, 
     })
     .then(result => {
-        console.log(`Shoe Added: ${request.body.releaseName}`)
+        console.log(`Shoe Added: ${clearUrl}`)
         response.redirect('/')
     })
     .catch(error => console.error(error));
