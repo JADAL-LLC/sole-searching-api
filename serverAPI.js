@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 const myModules = require('./operations/myFunctions')
 require('dotenv').config();
 
@@ -64,7 +64,9 @@ app.post('/addShoe', (request, response) => {
 
 // delete request to DB
 app.delete('/deleteShoe', (request, response) => {
-    db.collection('shoes').deleteOne({birthName: request.body.birthName})
+    console.log(request.body.itemFormJS)
+    console.log(request.body.itemFormJS2)
+    db.collection('shoes').deleteOne({releaseName: request.body.itemFormJS})
     .then(result => {
         console.log('Shoe Deleted')
         response.json('Shoe Deleted')
