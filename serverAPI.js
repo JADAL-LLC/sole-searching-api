@@ -62,7 +62,7 @@ app.post('/addShoe', (request, response) => {
 });
 
 
-// delete request to DB
+// Delete request to DB
 app.delete('/deleteShoe', (request, response) => {
     console.log(request.body.itemFormJS)
     console.log(request.body.itemFormJS2)
@@ -74,6 +74,30 @@ app.delete('/deleteShoe', (request, response) => {
     .catch(error => console.error(error))
 });
 
+// Update request to DB
+app.put('/updateShoe', (request, response) => {
+    console.log(request.body.itemFormJS)
+    db.collection('shoes').updateOne({releaseName: request.body.itemFormJS},{
+        // Change the completed property from false to true
+        $set: {
+            releaseName: 'hello'
+          }
+    },{
+        // Since we are searching by string, we'll say whichever item that matches string that comes first is what we update
+        sort: {_id: -1},
+
+        // If set to true and you try to update something that isn't there, it will create document for you (can save headache if template language is stiff and requires something to be there)
+        upsert: false
+    })
+    // Now responsd to client side
+    .then(result => {
+        console.log('Marked Complete')
+        // Send a json response 'Marked complete to client side'
+        response.json('Marked Complete')
+    })
+    .catch(error => console.error(error))
+
+})
 
 // Initialize server
 app.listen(PORT, () => {
