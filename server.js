@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
+
 
 const PORT = 8000
 
@@ -34,6 +36,8 @@ const shoes = {
     },
 
 }
+app.use(cors());
+
 
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html')
